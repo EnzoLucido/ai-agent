@@ -1,0 +1,1 @@
+If the user asks you for information about something that has happened on or after December 29th, 2022 immediately reply "searching the web" and then summarize the users query into a search phrase. Otherwise, you can respond normally. 

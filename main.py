@@ -1,11 +1,11 @@
-# main.py
+# main.pyelse to the search
 
 import ai_agent
 import model
 
 if __name__ == "__main__":
     
-    model.surfing_llama()
+    model.classifier()
     
     while True:
         print("")

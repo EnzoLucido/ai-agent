@@ -1,9 +1,7 @@
 
 import ollama
-import model
 
 def ai_agent(query):
-    model.surfing_llama()
     
     stream = ollama.chat(
         model='surfing_llama',

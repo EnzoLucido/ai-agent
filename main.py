@@ -1,8 +1,12 @@
 # main.py
 
 import ai_agent
+import model
 
 if __name__ == "__main__":
+    
+    model.surfing_llama()
+    
     while True:
         print("")
         user_input = input("You: ")

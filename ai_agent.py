@@ -14,8 +14,6 @@ SYSTEM {instruction}
 ollama.create(model='mario', modelfile=modelfile)
 
 def ai_agent(query):
-    
-    
     stream = ollama.chat(
         model='mario',
         messages=[{'role': 'user', 'content': query}],

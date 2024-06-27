@@ -4,6 +4,7 @@ import ai_agent
 
 if __name__ == "__main__":
     while True:
+        print("")
         user_input = input("You: ")
         if user_input.lower() in ["exit", "quit"]:
             break

@@ -1,14 +1,18 @@
-# ai_agent.py
 
-from transformers import LLaMATokenizer, LLaMAForCausalLM
+# Load model directly
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
-tokenizer = LLaMATokenizer.from_pretrained('path/to/llama-3')
-model = LLaMAForCausalLM.from_pretrained('path/to/llama-3')
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B")
+model = AutoModelForCausalLM.from_pretrained("meta-llama/Meta-Llama-3-8B")
 
 def generate_response(prompt):
     inputs = tokenizer(prompt, return_tensors="pt")
     outputs = model.generate(**inputs)
     return tokenizer.decode(outputs[0])
+
+def test(user_input):
+    # Example response generation logic
+    return f"Echo: {user_input}"
 
 def ai_agent(query):
     if 'search the web for' in query.lower():

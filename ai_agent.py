@@ -9,16 +9,15 @@ def ai_agent(query):
     )
     
     if classification['message']['content'] == "B":
-        print("it can go through")
+        approved_query(query)
     else:
         print("it can not go through, must search")
     
-    print(classification['message']['content'])
-    return
-    
+
+def approved_query(query):
     stream = ollama.chat(
         model='llama3',
-        messages=[{'role': 'user', 'content': cleared_query}],
+        messages=[{'role': 'user', 'content': query}],
         stream=True,
     )
     for chunk in stream:

@@ -6,6 +6,7 @@ import model
 if __name__ == "__main__":
     
     model.classifier()
+    model.search_term_creator()
     
     while True:
         print("")

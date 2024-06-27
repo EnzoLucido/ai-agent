@@ -11,7 +11,12 @@ def ai_agent(query):
     if classification['message']['content'] == "B":
         approved_query(query)
     else:
-        print("it can not go through, must search")
+        search_terms = ollama.chat(
+            model='search_term_creator',
+            messages=[{'role':'user', 'content':query}]
+        )
+        
+        print(search_terms['message']['content'])
     
 
 def approved_query(query):

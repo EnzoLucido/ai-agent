@@ -5,7 +5,7 @@ def surfing_llama():
 
     date_and_time = datetime.now()
     date = date_and_time.strftime("%B %d, %Y")
-    date_instruction = f'You know that the date is {date}, which is after December 29th,2022. You do not know anything else about what has happened since December 29th, 2022'
+    date_instruction = f'You know that the date is {date}, which is after December 29th,2022. You do not know anything else about what has happened since December 29th, 2022. If the user asks for a story from today or a period of time ago, output searching the web: generated search term.' 
 
     with open('instruction.txt', 'r') as file:
         # Read the entire content of the file

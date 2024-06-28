@@ -2,7 +2,7 @@
 import ollama
 import web_search
 def ai_agent(query):
-
+    
     classification = ollama.chat(
         model='classifier',
         messages=[{'role':'user', 'content': query}]
@@ -19,7 +19,6 @@ def ai_agent(query):
         search_query = "answer this query " + query + "by using the following: "+ web_search.search(material)
         approved_query(search_query)
         
-        print(search_terms['message']['content'])
     
 
 def approved_query(query):

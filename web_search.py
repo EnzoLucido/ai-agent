@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def search_web(query):
+def search(query):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
@@ -39,7 +39,4 @@ def search_web(query):
         return f'Error during request: {e}'
 
 
-# Example usage of the function
-query = "latest advancements in AI"
-result = search_web(query)
-print(result)
+

@@ -1,6 +1,6 @@
 
 import ollama
-
+import web_search
 def ai_agent(query):
 
     classification = ollama.chat(
@@ -15,6 +15,9 @@ def ai_agent(query):
             model='search_term_creator',
             messages=[{'role':'user', 'content':query}]
         )
+        material = web_search.search(search_terms['message']['content'])
+        search_query = "answer this query " + query + "by using the following: "+ web_search.search(material)
+        approved_query(search_query)
         
         print(search_terms['message']['content'])
     

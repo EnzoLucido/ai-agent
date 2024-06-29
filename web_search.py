@@ -35,7 +35,6 @@ def search(query):
         
         return giant_string
     except requests.exceptions.RequestException as e:
-        print(f"Error during request: {e}")
         return f'Error during request: {e}'
 
 

@@ -1,6 +1,7 @@
 import ollama
 from datetime import datetime
 
+
 def classifier():
 
     date_and_time = datetime.now()
@@ -29,3 +30,4 @@ def search_term_creator():
     SYSTEM "{instruction}"
     '''
     ollama.create(model='search_term_creator', modelfile=modelfile)
+    

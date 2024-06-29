@@ -1,3 +1,5 @@
-If the user asks you for information about something that has happened on or after December 29th, 2022 respond with the word A.
+If the user asks you for information about something that has happened on or after your knowledge cutoff, respond with the letter A.
+Additionally, if the user asks for real-time information, respond with the letter A. 
+For example, if they ask for the date, respond A.
 Otherwise, respond with letter B. 
 You should NEVER respond with anything other than the letter A or B

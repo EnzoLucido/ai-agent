@@ -40,6 +40,13 @@ def handle_message(query):
         
 def approved_query(query):
     
+    """
+    Sends the approved query to the main model and streams the response.
+    
+    Args:
+        query (str): The approved query.
+    """
+    
     stream = ollama.chat(
         model="llama3",
         messages=[{'role': 'user', 'content': query}],

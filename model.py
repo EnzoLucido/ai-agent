@@ -1,5 +1,6 @@
 import ollama
-from datetime import datetime
+import web_search
+
 
 def create_models():
     classifier()
@@ -15,10 +16,7 @@ def classifier():
         These unintuitive variables seem to encourage AI to make a clean pick
     '''
 
-    date_and_time = datetime.now()
-    date = date_and_time.strftime("%B %d, %Y")
-    date_instruction = f'You know that the date is {date},' 
-    date_instruction = ' which is after December 29th,2022. You do not know anything else about what has happened since December 29th, 2022. If the user asks for a story from today or a period of time ago, you should respond with A.' 
+    date_instruction = web_search.date() + ' which is after December 29th,2022. You do not know anything else about what has happened since December 29th, 2022. If the user asks for a story from today or a period of time ago, you should respond with A.' 
 
     with open('instructions/classifier.txt', 'r') as file:
         # Read the entire content of the file
@@ -46,34 +44,3 @@ def search_term_creator():
     SYSTEM "{instruction}"
     '''
     ollama.create(model='search_term_creator', modelfile=modelfile)
-    
-def verifier():
-    '''
-        Verifies that we have found the right information
-        Currently unused.
-    '''
-    with open('instructions/verifier.txt', 'r') as file:
-        # Read the entire content of the file
-        instruction = file.read()
-
-    modelfile=f'''
-    FROM llama3
-    SYSTEM "{instruction}"
-    '''
-    ollama.create(model='verifier', modelfile=modelfile)
-    
-def added_info():
-    '''
-        Handles queries where there has been info 
-        added from the internet
-    '''
-    with open('instructions/added_info.txt', 'r') as file:
-        # Read the entire content of the file
-        instruction = file.read()
-
-    modelfile=f'''
-    FROM llama3
-    SYSTEM "{instruction}"
-    '''
-    ollama.create(model='added_info', modelfile=modelfile)
-    

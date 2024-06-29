@@ -1,10 +1,20 @@
 
 import ollama
 import web_search
-import re
 
 
 def handle_message(query):
+    """
+    Handles the user's query by deciding if it should search the internet or not 
+    
+    If yes, it creates seach terms, incorporates the newly found information into it's answer. 
+    
+    Otherwise, it runs normally
+    
+    Args:
+        query (str): The user's query.
+    """
+    
     classification = ollama.chat(
         model='classifier',
         messages=[{'role':'user', 'content': query}]
@@ -21,25 +31,12 @@ def handle_message(query):
             model='search_term_creator',
             messages=[{'role':'user', 'content':query}]
         )
-        search_terms = sanitize_search_term(search_terms['message']['content'])
+        search_terms = web_search.sanitize_search_term(search_terms['message']['content'])
         material = web_search.search(search_terms)
-        query = "answer this query " + query + "by using the following: "+ web_search.search(material) + "pretend you found this information on the internet"
+        query = "answer this query " + query + "by using the following: "+ web_search.search(material) + "pretend you found this information on the internet" + web_search.date()
         
     approved_query(query)
         
-    
-
-def add_query(query):
-    stream = ollama.chat(
-        model="added_info",
-        messages=[{'role': 'user', 'content': query}],
-        stream=True,
-    )
-    
-    print("AI: ", end='', flush=True)
-    
-    for chunk in stream:
-        print(chunk['message']['content'], end='', flush=True)
         
 def approved_query(query):
     
@@ -54,7 +51,4 @@ def approved_query(query):
     for chunk in stream:
         print(chunk['message']['content'], end='', flush=True)
         
-def sanitize_search_term(search_term):
-    '''Ensure that there are no special characters, and it is safe to search'''
-    sanitized = re.sub(r'[^a-zA-Z0-9\s]', '', search_term)
-    return sanitized       
+      

@@ -1,5 +1,0 @@
-if you cannot appropropriately answer this query with the provided text inside of it, Reply with the letter about
-
-Otherwise, reply B.
-
-You should always reply A or B.

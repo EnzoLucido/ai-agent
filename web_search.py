@@ -1,5 +1,7 @@
 import requests
+import re
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 def search(query):
     headers = {
@@ -38,4 +40,14 @@ def search(query):
         return f'Error during request: {e}'
 
 
+def sanitize_search_term(search_term):
+    '''Ensure that there are no special characters, and it is safe to search'''
+    sanitized = re.sub(r'[^a-zA-Z0-9\s]', '', search_term)
+    return sanitized 
 
+def date():
+    date_and_time = datetime.now()
+    date = date_and_time.strftime("%B %d, %Y")
+    date_instruction = f'You know that the date is {date},'
+    
+    return date_instruction 

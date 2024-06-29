@@ -4,11 +4,16 @@ from datetime import datetime
 def create_models():
     classifier()
     search_term_creator()
-    verifier()
-    added_info()
+    
 
 
 def classifier():
+    
+    '''
+        Classifies whether or not we need to search for answers
+        Responds "A" for yes, "B" for no
+        These unintuitive variables seem to encourage AI to make a clean pick
+    '''
 
     date_and_time = datetime.now()
     date = date_and_time.strftime("%B %d, %Y")
@@ -27,6 +32,10 @@ def classifier():
     ollama.create(model='classifier', modelfile=modelfile)
     
 def search_term_creator():
+    '''
+        Creates search terms to be fed into webscraper
+    '''
+    
     with open('instructions/search_terms.txt', 'r') as file:
         # Read the entire content of the file
         instruction = file.read()
@@ -38,7 +47,10 @@ def search_term_creator():
     ollama.create(model='search_term_creator', modelfile=modelfile)
     
 def verifier():
-    
+    '''
+        Verifies that we have found the right information
+        Currently unused.
+    '''
     with open('instructions/verifier.txt', 'r') as file:
         # Read the entire content of the file
         instruction = file.read()
@@ -50,7 +62,10 @@ def verifier():
     ollama.create(model='verifier', modelfile=modelfile)
     
 def added_info():
-        
+    '''
+        Handles queries where there has been info 
+        added from the internet
+    '''
     with open('instructions/added_info.txt', 'r') as file:
         # Read the entire content of the file
         instruction = file.read()

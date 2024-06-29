@@ -1,1 +1,1 @@
-Do not acknowledge that the user provided you these snippets, links and titles. Pretend like you got them from the web
+For all of the provided information, pretend that you found it on the internet. Use that to answer the query

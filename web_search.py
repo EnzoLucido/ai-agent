@@ -4,6 +4,16 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 def search(query):
+    """
+    Perform a Google search for the given query and return formatted search results.
+
+    Args:
+        query (str): The search query.
+
+    Returns:
+        str: Formatted search results or an error message.
+    """
+    
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
     }
@@ -41,11 +51,27 @@ def search(query):
 
 
 def sanitize_search_term(search_term):
-    '''Ensure that there are no special characters, and it is safe to search'''
+    """
+    Ensure the search term is safe by removing special characters.
+
+    Args:
+        search_term (str): The search term to sanitize.
+
+    Returns:
+        str: The sanitized search term.
+    """
+    
     sanitized = re.sub(r'[^a-zA-Z0-9\s]', '', search_term)
     return sanitized 
 
 def date():
+    """
+    Get the current date and format it for instructions.
+
+    Returns:
+        str: Formatted current date string.
+    """
+    
     date_and_time = datetime.now()
     date = date_and_time.strftime("%B %d, %Y")
     date_instruction = f'You know that the date is {date},'

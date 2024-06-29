@@ -1,6 +1,12 @@
 import ollama
 from datetime import datetime
 
+def create_models():
+    classifier()
+    search_term_creator()
+    verifier()
+    added_info()
+
 
 def classifier():
 
@@ -30,4 +36,28 @@ def search_term_creator():
     SYSTEM "{instruction}"
     '''
     ollama.create(model='search_term_creator', modelfile=modelfile)
+    
+def verifier():
+    
+    with open('instructions/verifier.txt', 'r') as file:
+        # Read the entire content of the file
+        instruction = file.read()
+
+    modelfile=f'''
+    FROM llama3
+    SYSTEM "{instruction}"
+    '''
+    ollama.create(model='verifier', modelfile=modelfile)
+    
+def added_info():
+        
+    with open('instructions/added_info.txt', 'r') as file:
+        # Read the entire content of the file
+        instruction = file.read()
+
+    modelfile=f'''
+    FROM llama3
+    SYSTEM "{instruction}"
+    '''
+    ollama.create(model='added_info', modelfile=modelfile)
     

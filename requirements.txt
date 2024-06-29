@@ -1,0 +1,3 @@
+ollama
+bs4
+requests

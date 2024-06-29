@@ -2,6 +2,25 @@
 import ollama
 import web_search
 
+def approved_query(query):
+    
+    """
+    Sends the approved query to the main model and streams the response.
+    
+    Args:
+        query (str): The approved query.
+    """
+    
+    stream = ollama.chat(
+        model="llama3",
+        messages=[{'role': 'user', 'content': query}],
+        stream=True,
+    )
+    
+    print("AI: ", end='', flush=True)
+    
+    for chunk in stream:
+        print(chunk['message']['content'], end='', flush=True)
 
 def handle_message(query):
     """
@@ -38,24 +57,6 @@ def handle_message(query):
     approved_query(query)
         
         
-def approved_query(query):
-    
-    """
-    Sends the approved query to the main model and streams the response.
-    
-    Args:
-        query (str): The approved query.
-    """
-    
-    stream = ollama.chat(
-        model="llama3",
-        messages=[{'role': 'user', 'content': query}],
-        stream=True,
-    )
-    
-    print("AI: ", end='', flush=True)
-    
-    for chunk in stream:
-        print(chunk['message']['content'], end='', flush=True)
+
         
       

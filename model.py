@@ -1,16 +1,6 @@
 import ollama
 import web_search
 
-
-def create_models():
-    '''
-        Creates the models that will be used on queries. 
-    '''
-    classifier()
-    search_term_creator()
-    
-
-
 def classifier():
     '''
     Classifies whether or not we need to search for answers
@@ -46,3 +36,11 @@ def search_term_creator():
     SYSTEM "{instruction}"
     '''
     ollama.create(model='search_term_creator', modelfile=modelfile)
+    
+def create_models():
+    '''
+        Creates the models that will be used on queries. 
+    '''
+    classifier()
+    search_term_creator()
+    
